@@ -1,0 +1,9 @@
+[32mINFO    [0m test_1:conftest.py:32 test_1 is started
+[32mINFO    [0m test_1:helper.py:14 https://www.6pm.com/ is opened.
+[32mINFO    [0m test_1:test_1.py:17 Search text 'classic sunglasses' is sent
+[32mINFO    [0m test_1:result_page.py:27 Find result couint is 1 items found
+[32mINFO    [0m test_1:test_1.py:25 Selected and searched names match
+[32mINFO    [0m test_1:test_1.py:34 Parsed price: 129.46
+[32mINFO    [0m test_1:test_1.py:41 Max allowable price: 200.0
+[32mINFO    [0m test_1:test_1.py:44 Price from item is in range $200.00 and Under
+[32mINFO    [0m test_1:conftest.py:34 test_1 is finished
