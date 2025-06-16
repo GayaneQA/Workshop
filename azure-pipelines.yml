@@ -1,0 +1,52 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+strategy:
+  matrix:
+    Python311:
+      python.version: '3.11'
+
+steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+    displayName: 'Use Python $(python.version)'
+
+  - script: |
+      python -m pip install --upgrade pip
+      pip install pytest pytest-html allure-pytest
+      pip install -r requirements.txt
+      npm install -g allure-commandline
+    displayName: 'Install Dependencies'
+
+  - script: |
+      echo "🔍 Listing test files..."
+      find Workshop/Tests -type f -name "test_*.py"
+
+      echo "🚀 Running tests..."
+      pytest Workshop/Tests \
+        --junitxml=Azure/report/test-results/TEST-results.xml \
+        --alluredir=Azure/report/allure-results
+    displayName: 'Run Tests'
+    continueOnError: true
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: 'Azure/report/test-results/TEST-results.xml'
+    condition: always()
+
+  - task: PublishAllureReport@1
+    inputs:
+      allureVersion: '2.25.0'
+      testResultsDir: 'Azure/report/allure-results'
+    condition: always()
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: 'Azure/report'
+      artifactName: 'AllureReport'
+    condition: always()
