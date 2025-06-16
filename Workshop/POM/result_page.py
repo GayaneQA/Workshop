@@ -4,7 +4,6 @@ from Helper.helper import Helper
 
 class RESULTPAGE(Helper):
 
-    # locators with description as the 3rd tuple item
     brand_checkbox = (By.XPATH, '//*[@id="brandNameFacet"]', "Brand Checkbox")
     brand_name = (By.XPATH, '//li[a//span[text()="RAEN Optics"]]', "Brand: RAEN Optics")
     price_checkbox = (By.XPATH, '//*[@id="priceFacet"]', "Price Checkbox")

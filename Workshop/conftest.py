@@ -24,7 +24,6 @@ def test_logger(request):
     test_name = request.node.name
     log_path = os.path.join(f"logs_{today_date}", test_name)
 
-    # Configure logger
     logger = logging.getLogger(test_name)
     file_handler = logging.FileHandler(log_path, mode='w')
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
@@ -33,7 +32,7 @@ def test_logger(request):
     logger.setLevel(logging.INFO)
 
     logger.info(f'{test_name} is started')
-    yield logger  # Pause the fixture  and pass logger to test
+    yield logger
     logger.info(f'{test_name} is finished')
 
 
