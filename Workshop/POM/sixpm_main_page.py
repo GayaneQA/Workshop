@@ -5,9 +5,8 @@ from Test_data import test_data
 
 class SIXPMPAGE(Helper):
 
-    # locators
-    search_field = (By.XPATH, '//*[@id="searchAll"]')
-    search_icon = (By.XPATH, '//*[@id="searchForm"]/button')
+    search_field = (By.XPATH, '//*[@id="searchAll"]', "Search Input Field")
+    search_icon = (By.XPATH, '//*[@id="searchForm"]/button', "Search Icon/Button")
 
     def search_text(self):
         try:
